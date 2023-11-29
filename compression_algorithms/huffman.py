@@ -7,21 +7,21 @@ class Nodes:
         self.code = ''
 
 
+codesDict = dict()
+
+
 def CalculateProbability(d):
-    the_symbols = dict()
+    symbolsDict = dict()
     for item in d:
-        if the_symbols.get(item) is None:
-            the_symbols[item] = 1
+        if symbolsDict.get(item) is None:
+            symbolsDict[item] = 1
         else:
-            the_symbols[item] += 1
-    return the_symbols
-
-
-the_codes = dict()
+            symbolsDict[item] += 1
+    return symbolsDict
 
 
 def CalculateCodes(node, value=''):
-    # a huffman code for current node
+    # a compression_algorithms code for current node
     newValue = value + str(node.code)
 
     if node.left:
@@ -30,9 +30,9 @@ def CalculateCodes(node, value=''):
         CalculateCodes(node.right, newValue)
 
     if not node.left and not node.right:
-        the_codes[node.symbol] = newValue
+        codesDict[node.symbol] = newValue
 
-    return the_codes
+    return codesDict
 
 
 def OutputEncoded(d, coding):
@@ -92,27 +92,28 @@ def HuffmanEncoding(d):
     return encodedOutput, the_nodes[0]
 
 
-def HuffmanDecoding(encodedData, huffmanTree):
-    treeHead = huffmanTree
+def HuffmanDecoding(encoded_data, huffman_tree):
+    treeHead = huffman_tree
     decodedOutput = []
-    for x in encodedData:
+    for x in encoded_data:
         if x == '1':
-            huffmanTree = huffmanTree.right
+            huffman_tree = huffman_tree.right
         elif x == '0':
-            huffmanTree = huffmanTree.left
+            huffman_tree = huffman_tree.left
         try:
-            if huffmanTree.left.symbol is None and huffmanTree.right.symbol is None:
+            if huffman_tree.left.symbol is None and huffman_tree.right.symbol is None:
                 pass
         except AttributeError:
-            decodedOutput.append(huffmanTree.symbol)
-            huffmanTree = treeHead
+            decodedOutput.append(huffman_tree.symbol)
+            huffman_tree = treeHead
 
     string = ''.join([str(item) for item in decodedOutput])
     return string
 
 
-# the_data = "AAAAAAABBCCCCCCDDDEEEEEEEEE"
-# print(the_data)
-# encoding, the_tree = HuffmanEncoding(the_data)
-# print("Encoded output", encoding)
-# print("Decoded Output", HuffmanDecoding(encoding, the_tree))
+the_data = "AAAAAAABBCCCCCCDDDEEEEEEEEE"
+print(the_data)
+encoding, the_tree = HuffmanEncoding(the_data)
+print(the_tree)
+print("Encoded output", encoding)
+print("Decoded Output", HuffmanDecoding(encoding, the_tree))
