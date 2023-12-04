@@ -61,9 +61,6 @@ def TotalGain(d, coding):
 def HuffmanEncoding(d):
     symbolWithProbs = CalculateProbability(d)
     the_symbols = symbolWithProbs.keys()
-    the_probabilities = symbolWithProbs.values()
-    print("symbols: ", the_symbols)
-    print("probabilities: ", the_probabilities)
 
     the_nodes = []
 
@@ -111,9 +108,9 @@ def HuffmanDecoding(encoded_data, huffman_tree):
     return string
 
 
-the_data = "AAAAAAABBCCCCCCDDDEEEEEEEEE"
-print(the_data)
-encoding, the_tree = HuffmanEncoding(the_data)
-print(the_tree)
-print("Encoded output", encoding)
-print("Decoded Output", HuffmanDecoding(encoding, the_tree))
+# the_data = "AAAAAAABBCCCCCCDDDEEEEEEEEE"
+# print(the_data)
+# encoding, the_tree = HuffmanEncoding(the_data)
+# print(the_tree)
+# print("Encoded output", encoding)
+# print("Decoded Output", HuffmanDecoding(encoding, the_tree))

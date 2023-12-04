@@ -31,11 +31,3 @@ def lz78_decompress(compressed_data):
         dictionary[len(dictionary) + 1] = substring
 
     return "".join(decompressed_data)
-
-
-# Example usage:
-original_data = "ABABABABA"
-compressed_data = lz78_compress(original_data)
-print("Original Data:", original_data)
-print("Compressed Data:", compressed_data)
-print("Decompressed Data:", lz78_decompress(compressed_data))

@@ -39,12 +39,3 @@ def lz77_decompress(compressed_data):
                 start += 1
 
     return decompressed_str
-
-
-# Example usage
-input_str = "ABABABABCABABABAB"
-compressed_data = lz77_compress(input_str)
-print("Compressed data:", compressed_data)
-
-decompressed_str = lz77_decompress(compressed_data)
-print("Decompressed string:", decompressed_str)
